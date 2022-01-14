@@ -1,11 +1,14 @@
 require('dotenv').config();
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const { check, validationResult } = require('express-validator');
 
 const nodemailer = require('nodemailer');
 
 const PORT = process.env.PORT || 5000;
+
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 //Middleware
 app.use(express.static('public'));
@@ -17,6 +20,7 @@ app.get('/', (req, res) => {
 
 app.post(
   '/',
+  urlencodedParser,
   [
     check('name').notEmpty(),
     check('email').notEmpty().isEmail(),
