@@ -1,11 +1,12 @@
 //hide-show visibility of sidemenu icons
-const mobileBtn = document.getElementById('mobile-cta');
-nav = document.querySelector('nav');
-mobileBtnExit = document.getElementById('mobile-exit');
+const mobileBtn = document.getElementById('mobile-cta'),
+  nav = document.querySelector('nav'),
+  mobileBtnExit = document.getElementById('mobile-exit');
 
 mobileBtn.addEventListener('click', () => {
   nav.classList.add('menu-btn');
   document.getElementById('mobile-cta').style.visibility = 'hidden';
+  console.log(nav.classList);
 });
 
 mobileBtnExit.addEventListener('click', () => {
@@ -55,10 +56,6 @@ const usrName = document.getElementById('name');
 const mail = document.getElementById('email');
 const sbj = document.getElementById('subject');
 const msg = document.getElementById('message');
-// const usrNameValue = usrName.value.trim();
-// const mailValue = mail.value.trim();
-// const sbjValue = sbj.value.trim();
-// const msgValue = msg.value.trim();
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -117,3 +114,25 @@ function isEmail(email) {
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
+
+//active current tab
+const sections = document.querySelectorAll('section');
+const links = document.querySelectorAll('nav a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (scrollY >= sectionTop - sectionHeight / 6) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  links.forEach((a) => {
+    a.classList.remove('current');
+    if (a.classList.contains(current)) {
+      a.classList.add('current');
+    }
+  });
+});

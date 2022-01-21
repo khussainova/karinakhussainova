@@ -3,6 +3,10 @@
   --primary-color: black;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: white;
   margin: 0;
@@ -479,7 +483,7 @@ nav {
   padding: 1em;
 }
 
-nav ul.primary-nav {
+nav ul#primary-nav {
   margin-top: 5em;
 }
 
@@ -493,6 +497,11 @@ nav li a {
 }
 
 nav li a:hover {
+  font-weight: bold;
+  text-decoration: overline;
+}
+
+nav li a.current {
   font-weight: bold;
   text-decoration: overline;
 }
@@ -548,9 +557,6 @@ nav li a:hover {
             justify-content: space-between;
     white-space: nowrap;
     width: 100%;
-    /*li.current a {
-      font-weight: bold;
-    }*/
   }
   .navbar #sidemenu ul {
     display: -webkit-box;
@@ -562,7 +568,7 @@ nav li a:hover {
     font-size: 1em;
     padding: 0.1em 1em;
   }
-  .navbar #sidemenu ul.primary-nav {
+  .navbar #sidemenu ul#primary-nav {
     margin-left: 20em;
     margin-top: -1.3em;
   }
